@@ -1,0 +1,96 @@
+:root {
+  --accent-color: #ffee88;
+  --background-color: #aa1155;
+  --border-color: hsl(333, 82%, 27%);
+  --active-border-color: hsl(333, 82%, 57%);
+  --text-color: #fff;
+  --text-secondary-color: #eee;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+html {
+  box-sizing: inherit;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background-color: var(--background-color);
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+h1 {
+  font-weight: bold;
+  margin: 0;
+  padding: 1rem;
+}
+
+.mainContainer {
+  display: grid;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.inputContainer {
+  border: none;
+  outline: none;
+  display: flex;
+  padding: 0;
+  gap: 1rem;
+}
+
+.input {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-bottom: 3px solid var(--border-color);
+  background-color: transparent;
+  color: var(--text-color);
+  padding: 1rem;
+  font-size: 3.25rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  transition: all 200ms ease-in-out;
+}
+
+.input:focus {
+  border-bottom: 3px solid var(--active-border-color);
+}
+
+.submit {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.875rem;
+  border-radius: 1rem;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  background-color: var(--accent-color);
+  font-weight: bold;
+}
+
+.hint {
+  font-size: 1.1rem;
+  color: var(--text-secondary-color);
+}
+
+.hintDirection {
+  font-weight: bold;
+}
+
+.word {
+  color: var(--text-color);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}

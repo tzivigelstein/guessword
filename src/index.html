@@ -12,14 +12,19 @@
     <link rel="stylesheet" href="./styles/styles.css" />
   </head>
   <body>
-    <h1>Adivina la palabra</h1>
+    <ul class="afterWordsContainer wordsContainer"></ul>
     <form class="mainContainer">
-      <span class="hint">The word <span class="hintDirection">is after:</span> <span class="word">awesome</span></span>
+      <span class="hint afterHint hiddenHint"
+        >La palabra <span class="hintDirection">está después de:</span> <span id="afterWord" class="word"></span
+      ></span>
       <fieldset class="inputContainer">
-        <input id="word" autofocus class="input" type="text" />
+        <input id="word" autofocus class="input" placeholder="Tu palabra" type="text" />
         <input class="submit" type="submit" value="Adivinar" />
       </fieldset>
-      <span class="hint">The word <span class="hintDirection">is before:</span> <span class="word">zoo</span></span>
+      <span class="hint beforeHint hiddenHint"
+        >La palabra <span class="hintDirection">está antes de:</span> <span id="beforeWord" class="word"></span
+      ></span>
     </form>
+    <ul class="beforeWordsContainer wordsContainer"></ul>
   </body>
 </html>

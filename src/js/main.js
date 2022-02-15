@@ -1,5 +1,6 @@
 import utils from './utils/index.js'
 import words from 'an-array-of-spanish-words'
+import Swal from 'sweetalert2'
 
 const { $, $$ } = utils
 
@@ -19,7 +20,11 @@ form.addEventListener('submit', e => {
   if (wordsList.includes(userWord)) return
   if (!words.includes(userWord)) return
   if (userWord === wordOfTheDay) {
-    alert('great')
+    Swal.fire({
+      title: '¡Felicidades!',
+      text: '¡Has encontrado la palabra del día!',
+      icon: 'success'
+    })
     return
   }
 

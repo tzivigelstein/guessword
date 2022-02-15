@@ -1,14 +1,14 @@
 import utils from './utils/index.js'
-import words from 'an-array-of-spanish-words'
+import words from './dictionary.js'
 import Swal from 'sweetalert2'
 
-const { $, $$ } = utils
+const { $, $$, getWordOfTheDay } = utils
 
 const wordsList = []
 
 const form = $('.mainContainer')
 
-const wordOfTheDay = 'increible'
+const wordOfTheDay = getWordOfTheDay()
 
 const [afterHint, beforeHint] = $$('.hint')
 
@@ -17,8 +17,22 @@ form.addEventListener('submit', e => {
   const userWord = e.target.elements.word.value.toLowerCase()
 
   if (userWord === '') return
-  if (wordsList.includes(userWord)) return
-  if (!words.includes(userWord)) return
+  if (wordsList.includes(userWord)) {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Oops...',
+      text: 'Ya has escogido esta palabra'
+    })
+    return
+  }
+  if (!words.includes(userWord)) {
+    Swal.fire({
+      title: 'Hmm...',
+      text: 'La palabra no parece estar en el diccionario',
+      icon: 'warning'
+    })
+    return
+  }
   if (userWord === wordOfTheDay) {
     Swal.fire({
       title: '¡Felicidades!',
@@ -67,24 +81,16 @@ form.addEventListener('submit', e => {
 
 function getBeforeAndAfterWords(wordsList) {
   const sortedWords = wordsList.sort(function (a, b) {
-    if (a < b) {
-      return -1
-    }
-    if (a > b) {
-      return 1
-    }
+    if (a < b) return -1
+    if (a > b) return 1
     return 0
   })
 
   const afterWords = sortedWords
     .filter(word => word < wordOfTheDay)
     .sort(function (a, b) {
-      if (a < b) {
-        return 1
-      }
-      if (a > b) {
-        return -1
-      }
+      if (a < b) return 1
+      if (a > b) return -1
       return 0
     })
   const beforeWords = sortedWords.filter(word => word > wordOfTheDay)
@@ -95,7 +101,10 @@ function getBeforeAndAfterWords(wordsList) {
 function createWordElement({ word, index }) {
   const wordElement = document.createElement('li')
   wordElement.classList.add('pastWord')
-  wordElement.style.fontSize = `${1.5 / (index / 10 + 1)}rem`
+
+  const fontSize = 1.5 / (index / 10 + 1) > 0.8 ? `${1.5 / (index / 10 + 1)}rem` : '0.8rem'
+
+  wordElement.style.fontSize = fontSize
   wordElement.innerText = word
   return wordElement
 }

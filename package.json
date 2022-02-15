@@ -18,6 +18,7 @@
     "webpack-dev-server": "4.7.4"
   },
   "dependencies": {
-    "an-array-of-spanish-words": "^2.0.0"
+    "an-array-of-spanish-words": "^2.0.0",
+    "sweetalert2": "^11.4.0"
   }
 }

@@ -1,6 +1,7 @@
 import utils from './utils/index.js'
 import words from './dictionary.js'
 import Swal from 'sweetalert2'
+import modal from './modal.js'
 
 const { $, $$, getWordOfTheDay } = utils
 
